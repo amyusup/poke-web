@@ -1,0 +1,56 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+.vw-100{
+  width: 100vw;
+  max-width: 100vw;
+}
+.vh-100{
+  height: 100vw;
+  max-height: 100vw;
+}
+.mx-10{
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+.bg-gray{
+  background-color: #eee;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button-secondary {background-color: #e7e7e7; color: black;}  
+.button-danger {background-color: #f44336;}
+
+.text-center{
+  text-align: center;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 20%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the four columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}

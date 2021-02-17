@@ -1,18 +1,18 @@
 import React from "react";
 import "./style.scss";
-export default function index() {
+export default function index(props) {
+    const {pokeID, name} = props
   return (
-    <div class="card">
+    <div className="card text-center">
       <img
-        src="https://assets.pokemon.com/assets/cms2/img/misc/countries/au/country_detail_pokemon.png"
-        alt="Avatar"
-        style={{ width: "100%" }}
+        src={`https://pokeres.bastionbot.org/images/pokemon/${pokeID}.png`}
+        alt="Pokemon"
+        style={{ width: "50%" }}
       />
-      <div class="container">
+      <div className="container text-center">
         <h4>
-          <b>John Doe</b>
+          <b>{name}</b>
         </h4>
-        <p>Architect & Engineer</p>
       </div>
     </div>
   );

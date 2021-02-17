@@ -1,4 +1,4 @@
-* { margin:0; padding:0; box-sizing:border-box; }
+* { margin:0; padding:0; box-sizing:border-box; overflow-x: hidden;}
 .vw-100{
   width: 100vw;
   max-width: 100vw;
@@ -7,9 +7,13 @@
   height: 100vw;
   max-height: 100vw;
 }
-.mx-10{
+.my-10{
   margin-top:10px;
   margin-bottom: 10px;
+}
+.mx-10{
+  margin-left:10px!important;
+  margin-right: 10px!important;
 }
 .bg-gray{
   background-color: #eee;

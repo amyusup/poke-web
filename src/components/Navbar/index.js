@@ -2,9 +2,9 @@ import React from "react";
 import './style.scss';
 export default function index() {
   return (
-    <ul class="topnav">
+    <ul className="topnav">
       <li>
-      <a class="active" href="/">
+      <a className="active" href="/">
           POKE - WEB
         </a>
       </li>

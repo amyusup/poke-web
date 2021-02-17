@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Route,
 } from "react-router-dom";
-import { Dashboard } from "./pages";
+import { Dashboard, Detail } from "./pages";
 
 function App() {
   return (
@@ -16,6 +16,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Dashboard />
+          </Route>
+          <Route exact path="/pokemon-detail/:id">
+            <Detail />
           </Route>
           <Route path="*" component={NotFound} />
         </Switch>

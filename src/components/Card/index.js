@@ -1,9 +1,22 @@
 import React from "react";
 import "./style.scss";
-export default function index(props) {
-    const {pokeID, name} = props
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {  getPokemonById } from "../../redux/actions/pokemon";
+export default function Card(props) {
+  const { pokeID, name } = props;
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const _onDetail = async() => {
+    await dispatch(getPokemonById(pokeID))
+    history.push(`pokemon-detail/${pokeID}`)
+  };
   return (
-    <div className="card text-center">
+    <div
+      className="card text-center bg-gray"
+      onClick={() => _onDetail() }
+    >
       <img
         src={`https://pokeres.bastionbot.org/images/pokemon/${pokeID}.png`}
         alt="Pokemon"

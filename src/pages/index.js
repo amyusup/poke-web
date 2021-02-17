@@ -1,5 +1,7 @@
 import Dashboard from './Dashboard'
+import Detail from './Detail'
 
 export{
-    Dashboard
+    Dashboard,
+    Detail
 }

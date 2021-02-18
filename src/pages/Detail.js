@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import Card from "../components/Card";
+import Skillbar from "../components/Skillbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemonById } from "../redux/actions/pokemon";
 import { useHistory, useParams } from "react-router-dom";
@@ -9,10 +9,10 @@ export default function Detail() {
   const { pokemonById } = useSelector((state) => state.pokemon);
   const history = useHistory();
   let { id } = useParams();
-  React.useEffect(() => {
-    // dispatch(getPokemonById(id));
-  }, [id]);
-  console.log(pokemonById.types[0].type.name);
+  React.useEffect(async () => {
+    await dispatch(getPokemonById(id));
+  }, []);
+  // console.log(pokemonById.types[0].type.name);
   const _onNext = () => {
     // setLimit(limit + 25);
   };
@@ -22,16 +22,18 @@ export default function Detail() {
       <h3 className="text-center my-30">Detail of pokemon</h3>
 
       <div className="row mx-10">
-        <div className="column column-50 bg-gray text-center radius-20">
+        <div className="column column-50  text-center radius-20 p-10">
           <img
             src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
             alt="Pokemon"
-            style={{ width: "75%" }}
+            style={{ width: "50%" }}
           />
         </div>
         <div className="column column-50">
-          <h3 className="text-uppercase">{pokemonById.name}</h3>
-          <div className="bg-dark p-10 radius-20 ROW">
+          <h3 className="text-uppercase text-center bg-dark radius-20 my-10 p-10">
+            {pokemonById.name}
+          </h3>
+          <div className="bg-gray p-10 radius-20 ROW">
             <div className="column column-50">
               Height : {pokemonById.height}
             </div>
@@ -39,22 +41,51 @@ export default function Detail() {
               Weight : {pokemonById.weight}
             </div>
             <div className="column column-50">
-              Species :
-                {pokemonById.abilities[0].ability.name}
+              Abilities :
+              {pokemonById.abilities.map((item, index) => {
+                return (
+                  <div
+                    className=" bg-dark p-10 my-10 radius-20 text-center text-capitalize"
+                    style={{ width: "50%" }}
+                    key={index}
+                  >
+                    {item.ability.name}
+                  </div>
+                );
+              })}
             </div>
             <div className="column column-50">
               Type :
-              {pokemonById.types.map((item, index) => 
-                item.type.name + ", "
-              )}
+              {pokemonById.types.map((item, index) => {
+                return (
+                  <div
+                    className=" bg-dark p-10 my-10 radius-20 text-center text-capitalize"
+                    style={{ width: "50%" }}
+                    key={index}
+                  >
+                    {item.type.name}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
       </div>
-      <div className="text-center ">
+      <div className="row  mx-10">
+        <div className="column column-50">
+          {pokemonById.stats.map((item, index) => {
+            return <Skillbar key={index} name={item.stat.name} base_stat={item.base_stat} />;
+          })}
+        </div>
+      
+      <div
+        className="text-center my-10 column column-50"
+      >
+        Are you going to save this Pokemon data?
         <button className="button button-secondary mx-10" onClick={_onNext}>
           Save
         </button>
+      </div>
       </div>
     </div>
   );

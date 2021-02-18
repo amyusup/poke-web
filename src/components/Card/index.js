@@ -22,7 +22,7 @@ export default function Card(props) {
         alt="Pokemon"
         style={{ width: "50%" }}
       />
-      <div className="container text-center">
+      <div className="container-card text-center">
         <h4>
           <b>{name}</b>
         </h4>

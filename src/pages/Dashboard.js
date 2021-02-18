@@ -8,9 +8,15 @@ export default function Dashboard() {
   const dispatch = useDispatch();
   const { pokemon } = useSelector((state) => state.pokemon);
   const [limit, setLimit] = React.useState(25);
+  const [loading, setLoading] = React.useState(true);
   const history = useHistory();
   React.useEffect(() => {
-    dispatch(getPokemon(limit));
+    setLoading(true);
+    const timer = setTimeout(async() => {
+      await dispatch(getPokemon(limit));
+      setLoading(false);
+    }, 2000);
+    return ()=>clearTimeout(timer)
   }, [limit]);
 
   const _onNext = () => {
@@ -21,7 +27,6 @@ export default function Dashboard() {
     <div className="vw-100 ">
       <Navbar />
       <h3 className="text-center my-10">List of pokemon</h3>
-
       <div className="row mx-10">
         {pokemon.map((item, index) => {
           // dispatch(getPokemonById(item.url.substring(33).replace(/\//g,'')))
@@ -35,12 +40,23 @@ export default function Dashboard() {
           );
         })}
       </div>
+      <div
+        className="text-center"
+        style={{ visibility: loading ? "visible" : "hidden" }}
+      >
+        <img
+          src={window.location.origin + "/images/pokeball.gif"}
+          alt="Pokemon"
+          style={{ width: "25%" }}
+        />
+      </div>
       <div className="text-center ">
         {/* <button className="button button-secondary mx-10" onClick={_onPrev} style={{visibility:offset == 0?"hidden":"visible"}}>Prev</button> */}
         <button className="button button-secondary mx-10" onClick={_onNext}>
           Load More ...
         </button>
       </div>
+  
     </div>
   );
 }

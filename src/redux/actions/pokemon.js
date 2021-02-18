@@ -1,9 +1,10 @@
 import {
   GET_POKEMON,
   GET_POKEMON_BY_ID,
-  GET_POKEMON_TYPES,
+  ADD_POKEMON,
 } from "../type/pokemon";
 import axios from "../../helpers/axios";
+import axios2 from "../../helpers/axios2";
 
 export const getPokemon = (limit = 25) => async (dispatch) => {
   try {
@@ -21,5 +22,16 @@ export const getPokemonById = (id) => async (dispatch) => {
   } catch (e) {
     console.log(e);
     dispatch({ type: GET_POKEMON_BY_ID, payload: e });
+  }
+};
+export const addPokemon = (data) => async (dispatch) => {
+  try {
+    const res = await axios2.post(`/pokemon`, data);
+    dispatch({ type: ADD_POKEMON, payload: res.data.message });
+    alert('Pokemon data has been saved')
+  } catch (e) {
+    // console.log(e);
+    alert('Pokemon data has been saved')
+    dispatch({ type: ADD_POKEMON, payload: e.response.data.data.message });
   }
 };

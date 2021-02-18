@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Skillbar from "../components/Skillbar";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemonById } from "../redux/actions/pokemon";
+import { getPokemonById, addPokemon } from "../redux/actions/pokemon";
 import { useHistory, useParams } from "react-router-dom";
 export default function Detail() {
   const dispatch = useDispatch();
@@ -12,9 +12,8 @@ export default function Detail() {
   React.useEffect(async () => {
     await dispatch(getPokemonById(id));
   }, []);
-  // console.log(pokemonById.types[0].type.name);
-  const _onNext = () => {
-    // setLimit(limit + 25);
+  const _onSave = () => {
+    dispatch(addPokemon({pokeId:id,name:pokemonById.name}))
   };
   return (
     <div className="vw-100 ">
@@ -82,7 +81,7 @@ export default function Detail() {
         className="text-center my-10 column column-50"
       >
         Are you going to save this Pokemon data?
-        <button className="button button-secondary mx-10" onClick={_onNext}>
+        <button className="button button-secondary mx-10" onClick={_onSave}>
           Save
         </button>
       </div>

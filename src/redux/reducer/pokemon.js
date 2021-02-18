@@ -1,9 +1,9 @@
-import { GET_POKEMON, GET_POKEMON_BY_ID, GET_POKEMON_TYPES } from "../type/pokemon";
+import { GET_POKEMON, GET_POKEMON_BY_ID, ADD_POKEMON } from "../type/pokemon";
 
 const initialState = {
   pokemon: [],
   pokemonById: [],
-  pokemonTypes: [],
+  message: "",
 };
 
 export default (state = initialState, action) => {
@@ -13,18 +13,18 @@ export default (state = initialState, action) => {
         ...state,
         pokemon: action.payload,
       };
-    case GET_POKEMON_TYPES:
-      return {
-        ...state,
-        pokemonTypes: action.payload,
-      };
     case GET_POKEMON_BY_ID:
       return {
         ...state,
         pokemonById: action.payload,
       };
+    case ADD_POKEMON:
+      return {
+        ...state,
+        message: action.payload,
+      };
 
     default:
-      return state
+      return state;
   }
 };

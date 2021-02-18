@@ -1,3 +1,6 @@
 export const GET_POKEMON = 'GET_POKEMON';
+export const GET_MY_POKEMON = 'GET_MY_POKEMON';
 export const GET_POKEMON_BY_ID = 'GET_POKEMON_BY_ID';
 export const ADD_POKEMON = 'ADD_POKEMON';
+export const DELETE_MY_POKEMON = 'DELETE_MY_POKEMON';
+export const DELETE_ALL_MY_POKEMON = 'DELETE_ALL_MY_POKEMON';

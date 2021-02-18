@@ -9,12 +9,12 @@ export default function index() {
         </a>
       </li>
       <li>
-        <a href="#home">
+        <a href="/">
           Home
         </a>
       </li>
       <li>
-        <a href="#news">My Pokemon</a>
+        <a href="/my-pokemon">My Pokemon</a>
       </li>
     </ul>
   );

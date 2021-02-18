@@ -4,6 +4,7 @@
 $gray: #eee!important;
 $dark: #333!important;
 $danger: #ff6666!important;
+$orange: #fd7d24!important;
 
 
 .vw-100{
@@ -42,7 +43,7 @@ $danger: #ff6666!important;
 }
 
 .button {
-  background-color: #4CAF50; /* Green */
+  background-color: $orange; 
   border: none;
   color: white;
   padding: 15px 32px;
@@ -76,6 +77,9 @@ $danger: #ff6666!important;
 
 .column-50{
   width: 50%;
+}
+.column-75{
+  width: 75%;
 }
 
 /* Clear floats after the columns */

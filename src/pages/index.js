@@ -1,7 +1,9 @@
 import Dashboard from './Dashboard'
 import Detail from './Detail'
+import MyPokemon from './MyPokemon'
 
 export{
     Dashboard,
-    Detail
+    Detail,
+    MyPokemon
 }

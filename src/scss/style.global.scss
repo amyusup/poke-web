@@ -1,14 +1,15 @@
 * { margin:0; padding:0; box-sizing:border-box; overflow-x: hidden;}
 
 // variable
-$gray: #eee!important;
-$dark: #333!important;
-$danger: #ff6666!important;
-$orange: #fd7d24!important;
+// $gray: #eee!important;
+// $dark: #333!important;
+// $danger: #ff6666!important;
+// $orange: #fd7d24!important;
 
 :root{
   --color-gray:#eee!important;
   --color-dark: #333!important;
+  --color-success: #6fdc6f!important;
   --color-danger: #ff6666!important;
   --color-orange: #fd7d24!important;
 }

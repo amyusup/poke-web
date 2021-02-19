@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Alert from "../components/Alert";
 import Card from "../components/Card";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -13,6 +14,7 @@ export default function Dashboard() {
   const { myPokemon, message } = useSelector((state) => state.pokemon);
   const [limit, setLimit] = React.useState(25);
   const [loading, setLoading] = React.useState(true);
+  const [visible, setVisible] = React.useState("none");
   const history = useHistory();
   React.useEffect(() => {
     setLoading(true);
@@ -23,11 +25,13 @@ export default function Dashboard() {
     return () => clearTimeout(timer);
   }, [limit, message]);
 
-  const _onDelete = (pokeId) => {
-    dispatch(deleteMyPokemon(pokeId));
+  const _onDelete = async(pokeId) => {
+   await dispatch(deleteMyPokemon(pokeId));
+   setVisible("block");
   };
-  const _onDeleteAll = (pokeId) => {
-    dispatch(deleteAllMyPokemon());
+  const _onDeleteAll = async() => {
+   await dispatch(deleteAllMyPokemon());
+   setVisible("block");
   };
 
   const _onNext = () => {
@@ -37,6 +41,11 @@ export default function Dashboard() {
   return (
     <div className="vw-100 ">
       <Navbar />
+      <Alert
+        visible={visible}
+        setVisible={() => setVisible("none")}
+        text="Pokemon data has been delete"
+      />
       <div className="text-center my-10">
       <h2 >List of My pokemon
         <button

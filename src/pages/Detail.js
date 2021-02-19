@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Alert from "../components/Alert";
 import Skillbar from "../components/Skillbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemonById, addPokemon } from "../redux/actions/pokemon";
@@ -7,17 +8,24 @@ import { useParams } from "react-router-dom";
 export default function Detail() {
   const dispatch = useDispatch();
   const { pokemonById } = useSelector((state) => state.pokemon);
+  const [visible, setVisible] = React.useState("none");
   let { id } = useParams();
-  
+
   React.useEffect(async () => {
     await dispatch(getPokemonById(id));
   }, []);
-  const _onSave = () => {
-    dispatch(addPokemon({pokeId:id,name:pokemonById.name}))
+  const _onSave = async () => {
+    await dispatch(addPokemon({ pokeId: id, name: pokemonById.name }));
+    setVisible("block");
   };
   return (
     <div className="vw-100 ">
       <Navbar />
+      <Alert
+        visible={visible}
+        setVisible={() => setVisible("none")}
+        text="Pokemon data has been saved"
+      />
       <h3 className="text-center my-30">Detail of pokemon</h3>
 
       <div className="row mx-10">
@@ -73,18 +81,22 @@ export default function Detail() {
       <div className="row  mx-10">
         <div className="column column-50">
           {pokemonById.stats.map((item, index) => {
-            return <Skillbar key={index} name={item.stat.name} base_stat={item.base_stat} />;
+            return (
+              <Skillbar
+                key={index}
+                name={item.stat.name}
+                base_stat={item.base_stat}
+              />
+            );
           })}
         </div>
-      
-      <div
-        className="text-center my-10 column column-50"
-      >
-        Are you going to save this Pokemon data?
-        <button className="button button-secondary mx-10" onClick={_onSave}>
-          Save
-        </button>
-      </div>
+
+        <div className="text-center my-10 column column-50">
+          Are you going to save this Pokemon data?
+          <button className="button button-secondary mx-10" onClick={_onSave}>
+            Save
+          </button>
+        </div>
       </div>
     </div>
   );

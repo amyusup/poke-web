@@ -40,10 +40,10 @@ export const addPokemon = (data) => async (dispatch) => {
   try {
     const res = await axios2.post(`/pokemon`, data);
     dispatch({ type: ADD_POKEMON, payload: res.data.message });
-    alert('Pokemon data has been saved')
+    // alert('Pokemon data has been saved')
   } catch (e) {
     // console.log(e);
-    alert('Pokemon data has been saved')
+    // alert('Pokemon data has been saved')
     dispatch({ type: ADD_POKEMON, payload: e.response.data.data.message });
   }
 };
@@ -53,10 +53,10 @@ export const deleteMyPokemon = (pokeId) => async (dispatch) => {
   try {
     const res = await axios2.delete(`/pokemon/${pokeId}`);
     dispatch({ type: DELETE_MY_POKEMON, payload: res.data.message });
-    alert('Pokemon data has been delete')
+    // alert('Pokemon data has been delete')
   } catch (e) {
     // console.log(e);
-    alert('Pokemon data failed to delete')
+    // alert('Pokemon data failed to delete')
     dispatch({ type: DELETE_MY_POKEMON, payload: e.response.data.data.message });
   }
 };
@@ -65,10 +65,10 @@ export const deleteAllMyPokemon = () => async (dispatch) => {
   try {
     const res = await axios2.delete(`/pokemon`);
     dispatch({ type: DELETE_ALL_MY_POKEMON, payload: res.data.message });
-    alert('All pokemon data has been delete')
+    // alert('All pokemon data has been delete')
   } catch (e) {
     // console.log(e);
-    alert('All pokemon data failed to delete')
+    // alert('All pokemon data failed to delete')
     dispatch({ type: DELETE_ALL_MY_POKEMON, payload: e.response.data.data.message });
   }
 };

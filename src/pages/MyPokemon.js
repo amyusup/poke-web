@@ -50,7 +50,6 @@ export default function Dashboard() {
       <h2 >List of My pokemon
         <button
           className="button button-danger radius-20"
-          // style={{ width: "10%" }}
           onClick={() => _onDeleteAll()}
         >
           Clear

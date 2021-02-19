@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.scss";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {  getPokemonById } from "../../redux/actions/pokemon";
 export default function Card(props) {
   const { pokeID, name } = props;

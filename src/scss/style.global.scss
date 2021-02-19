@@ -6,6 +6,13 @@ $dark: #333!important;
 $danger: #ff6666!important;
 $orange: #fd7d24!important;
 
+:root{
+  --color-gray:#eee!important;
+  --color-dark: #333!important;
+  --color-danger: #ff6666!important;
+  --color-orange: #fd7d24!important;
+}
+
 
 .vw-100{
   width: 100vw;
@@ -27,23 +34,31 @@ $orange: #fd7d24!important;
   margin-left:10px!important;
   margin-right: 10px!important;
 }
+.mx-20{
+  margin-left:20px!important;
+  margin-right: 20px!important;
+}
 .p-10{
   padding: 10px;
+}
+.px-20{
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .radius-20{
   border-radius: 20px;
 }
 .bg-gray{
-  background-color: $gray;
+  background-color: var(--color-gray);
 }
 
 .bg-dark{
-  background-color: $dark;
+  background-color: var(--color-dark);
   color:white;
 }
 
 .button {
-  background-color: $orange; 
+  background-color: var(--color-orange); 
   border: none;
   color: white;
   padding: 15px 32px;
@@ -54,8 +69,8 @@ $orange: #fd7d24!important;
   margin: 4px 2px;
   cursor: pointer;
 }
-.button-secondary {background-color: $gray; color: $dark;}  
-.button-danger {background-color: $danger;}
+.button-secondary {background-color: var(--color-gray); color: var(--color-dark);}  
+.button-danger {background-color: var(--color-danger);}
 
 .text-center{
   text-align: center;

@@ -3,12 +3,12 @@ import Navbar from "../components/Navbar";
 import Skillbar from "../components/Skillbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemonById, addPokemon } from "../redux/actions/pokemon";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 export default function Detail() {
   const dispatch = useDispatch();
   const { pokemonById } = useSelector((state) => state.pokemon);
-  const history = useHistory();
   let { id } = useParams();
+  
   React.useEffect(async () => {
     await dispatch(getPokemonById(id));
   }, []);

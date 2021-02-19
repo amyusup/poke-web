@@ -3,7 +3,7 @@ ul.topnav {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: var(--color-dark);
   }
   
   ul.topnav li {float: left;}
@@ -19,7 +19,7 @@ ul.topnav {
 //   ul.topnav li a:hover:not(.active) {background-color: #111;}
   ul.topnav li a:hover {background-color: #111;}
   
-  ul.topnav li a.active {background-color: #fd7d24;}
+  ul.topnav li a.active {background-color: var(--color-orange);}
 
   @media screen and (max-width: 600px) {
     ul.topnav li.right, 

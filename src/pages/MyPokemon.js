@@ -15,7 +15,6 @@ export default function Dashboard() {
   const [loading, setLoading] = React.useState(true);
   const history = useHistory();
   React.useEffect(() => {
-    // dispatch(getMyPokemon(limit))
     setLoading(true);
     const timer = setTimeout(async () => {
       await dispatch(getMyPokemon(limit));
@@ -42,7 +41,7 @@ export default function Dashboard() {
       <h2 >List of My pokemon
         <button
           className="button button-danger radius-20"
-          style={{ width: "10%" }}
+          // style={{ width: "10%" }}
           onClick={() => _onDeleteAll()}
         >
           Clear
@@ -67,7 +66,6 @@ export default function Dashboard() {
           </>
         ) : (
           myPokemon.map((item, index) => {
-            // dispatch(getPokemonById(item.url.substring(33).replace(/\//g,'')))
             return (
               <div className="column" key={index}>
                 <Card name={item.name} pokeID={item.pokeId} />

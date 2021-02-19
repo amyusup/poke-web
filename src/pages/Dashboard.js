@@ -2,21 +2,20 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemon, getPokemonById } from "../redux/actions/pokemon";
-import { useHistory } from "react-router-dom";
+import { getPokemon } from "../redux/actions/pokemon";
 export default function Dashboard() {
   const dispatch = useDispatch();
   const { pokemon } = useSelector((state) => state.pokemon);
   const [limit, setLimit] = React.useState(25);
   const [loading, setLoading] = React.useState(true);
-  const history = useHistory();
+
   React.useEffect(() => {
     setLoading(true);
-    const timer = setTimeout(async() => {
+    const timer = setTimeout(async () => {
       await dispatch(getPokemon(limit));
       setLoading(false);
     }, 2000);
-    return ()=>clearTimeout(timer)
+    return () => clearTimeout(timer);
   }, [limit]);
 
   const _onNext = () => {
@@ -27,9 +26,10 @@ export default function Dashboard() {
     <div className="vw-100 ">
       <Navbar />
       <h3 className="text-center my-10">List of pokemon</h3>
-      <div className="row mx-10">
+      <div className="my-10"></div>
+
+      <div className="row mx-20">
         {pokemon.map((item, index) => {
-          // dispatch(getPokemonById(item.url.substring(33).replace(/\//g,'')))
           return (
             <div className="column" key={index}>
               <Card
@@ -51,12 +51,14 @@ export default function Dashboard() {
         />
       </div>
       <div className="text-center ">
-        {/* <button className="button button-secondary mx-10" onClick={_onPrev} style={{visibility:offset == 0?"hidden":"visible"}}>Prev</button> */}
-        <button className="button button-secondary mx-10" onClick={_onNext}>
+        <button
+          className="button button-secondary mx-10"
+          onClick={_onNext}
+          style={{ visibility: pokemon.length < 25 ? "hidden" : "visible" }}
+        >
           Load More ...
         </button>
       </div>
-  
     </div>
   );
 }

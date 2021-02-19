@@ -71,7 +71,7 @@ export default function Dashboard() {
                 <Card name={item.name} pokeID={item.pokeId} />
                 <button
                   className="button button-danger radius-20"
-                  style={{ width: "90%" }}
+                  style={{ width: "100%" }}
                   onClick={() => _onDelete(item.pokeId)}
                 >
                   Delete
